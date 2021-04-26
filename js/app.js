@@ -1,10 +1,15 @@
+
 const memory = {
-    name:'',
+    name:"",
+    divImg:"",
     card : 20,
     gridColumn: 5,
     gridRows: 4,
     checkedCard: 2,
+    checkedCardTab:[],
     moveCount:0,
+    click : true,
+    matchinCard : 0, 
     cardsImg : [ 
         "img/1.svg",
         "img/2.svg",
@@ -37,20 +42,33 @@ const memory = {
         "img/29.svg",
         "img/30.svg",
     ],
-    //TODO TODO_1 - 1/3 Losowanie
+ 
+
+    cardClick(e){
+        if (this.click) {
+           
+            if (this.checkedCardTab){
+                this.checkedCardTab.push(e.target);
+                e.target.style.backgroundImage = `url(${this.cardsImg[e.target.dataset.cardRandom]})`;
+                console.log(this.checkedCardTab);
+            }
+            
+        }
+        this.moveCount++;
+        this.divScore.innerText = `${this.name} : ${this.moveCount}`;
+    },
     startGame() {
-        this.name = prompt('podaj imię')
-        this.card = prompt('podaj ile kart', 20)
-        this.gridRows = prompt('podaj ile rzędów', 4)
-        this.gridColumn = prompt('podaj ile kolumn', 5)
-        this.checkedCard = prompt('ile kart zaznaczonych', 2)
+        this.name = prompt("podaj imię")
+        this.card = prompt("podaj ile kart", 20)
+        this.gridRows = prompt("podaj ile rzędów", 4)
+        this.gridColumn = prompt("podaj ile kolumn", 5)
+        this.checkedCard = prompt("ile kart zaznaczonych", 2)
         this.gameBoard = document.querySelector(".game_board");
         
         this.gameBoard.style.gridTemplateColumns = `repeat(${this.gridColumn}, 1fr)`
         this.gameBoard.style.gridTemplateRows = `repeat(${this.gridRows}, 1fr)`
 
         this.divScore = document.querySelector(".game_score");
-        this.divName = document.querySelector('.game_name');
         this.divScore.innerHTML = `${this.name} : ${this.moveCount}`;
         
         this.cards = [];
@@ -74,12 +92,14 @@ const memory = {
 
             card.dataset.cardRandom = this.cards[i];
             card.dataset.index = i;
-         
+            console.log(this.cards);
+
+            card.addEventListener("click", e => this.cardClick(e));
         }
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     const btnStart = document.querySelector(".game_btn_start");
-    btnStart.addEventListener("click", () => memory.startGame());
+    btnStart.addEventListener("click", (e) => memory.startGame());
 });

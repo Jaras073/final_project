@@ -29,7 +29,7 @@ body {
 .game_card {
     cursor: pointer;
     background: #BF9663;
-    background-image: url('./img/1.svg');
+    /* background-image: url('./img/1.svg'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
