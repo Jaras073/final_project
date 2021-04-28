@@ -1,15 +1,17 @@
-
 const memory = {
-    name:"",
+    userName:"",
     divImg:"",
     card : 20,
     gridColumn: 5,
     gridRows: 4,
     checkedCard: 2,
     checkedCardTab:[],
-    moveCount:0,
+    hiScores:[],
+    date: new Date(),
+    moveCount:'00',
     click : true,
     matchinCard : 0, 
+    cardsPairs : 0,
     cardsImg : [ 
         "img/1.svg",
         "img/2.svg",
@@ -44,62 +46,138 @@ const memory = {
     ],
  
 
-    cardClick(e){
-        if (this.click) {
-           
-            if (this.checkedCardTab){
-                this.checkedCardTab.push(e.target);
-                e.target.style.backgroundImage = `url(${this.cardsImg[e.target.dataset.cardRandom]})`;
-                console.log(this.checkedCardTab);
+}
+
+const cardClick = ({memory, e}) => {
+
+    // const {click, checkedCard, checkedCardTab, cardsImg, moveCount, userName, cardsPairs, card, hiScores} = memory
+
+    if (memory.click && memory.checkedCard === '2') {
+        
+        if (!memory.checkedCardTab[0] || (memory.checkedCardTab[0].dataset.index !== e.target.dataset.index)){
+            memory.checkedCardTab.push(e.target);
+            e.target.style.backgroundImage = `url(${memory.cardsImg[e.target.dataset.cardRandom]})`;
+            console.log(memory.checkedCardTab);
+        }
+
+        if (memory.checkedCardTab.length === parseInt(memory.checkedCard)) {
+            memory.click = false;
+
+            if (memory.checkedCardTab[0].dataset.cardRandom === memory.checkedCardTab[1].dataset.cardRandom) {
+                setTimeout(() => deleteCard(), 500);
+            } else {
+                setTimeout(() => resetCard(), 500);
             }
             
+            console.log(memory.checkedCardTab.length);
+            memory.moveCount++;
         }
-        this.moveCount++;
-        this.divScore.innerText = `${this.name} : ${this.moveCount}`;
-    },
-    startGame() {
-        this.name = prompt("podaj imię")
-        this.card = prompt("podaj ile kart", 20)
-        this.gridRows = prompt("podaj ile rzędów", 4)
-        this.gridColumn = prompt("podaj ile kolumn", 5)
-        this.checkedCard = prompt("ile kart zaznaczonych", 2)
-        this.gameBoard = document.querySelector(".game_board");
+    
+            const countner = memory.moveCount < 10 ? `0${memory.moveCount}` : `${memory.moveCount}`;
         
-        this.gameBoard.style.gridTemplateColumns = `repeat(${this.gridColumn}, 1fr)`
-        this.gameBoard.style.gridTemplateRows = `repeat(${this.gridRows}, 1fr)`
+            divScore.innerText = `${memory.userName} : ${countner}`;
+            console.log(`${memory.userName} zdobył ${memory.moveCount}`);
+    }
 
-        this.divScore = document.querySelector(".game_score");
-        this.divScore.innerHTML = `${this.name} : ${this.moveCount}`;
+    if (memory.click && memory.checkedCard === '3') {
         
-        this.cards = [];
-
-        for (let i=0; i<this.card; i++) {
-            this.cards.push(Math.floor(i/`${this.checkedCard}`));
-            // console.log(this.cards);
+        if (!memory.checkedCardTab[0] || (memory.checkedCardTab[0].dataset.index !== e.target.dataset.index)){
+            memory.checkedCardTab.push(e.target);
+            e.target.style.backgroundImage = `url(${memory.cardsImg[e.target.dataset.cardRandom]})`;
+            console.log(memory.checkedCardTab);
         }
 
-        for (let i=this.card - 1; i > 0; i--) {
-            const randomIndex = Math.floor(Math.random()*i);
-            const number = this.cards[i];
-            this.cards[i] = this.cards[randomIndex] 
-            this.cards[randomIndex] = number;
+        if (memory.checkedCardTab.length === parseInt(memory.checkedCard)) {
+            memory.click = false;
+
+            if (memory.checkedCardTab[0].dataset.cardRandom === memory.checkedCardTab[1].dataset.cardRandom && memory.checkedCardTab[1].dataset.cardRandom === memory.checkedCardTab[2].dataset.cardRandom && memory.checkedCardTab[0].dataset.cardRandom === memory.checkedCardTab[2].dataset.cardRandom) {
+                setTimeout(() => deleteCard({memory}), 500);
+            } else {
+                setTimeout(() => resetCard({memory}), 500);
+            }
+            
+            console.log(memory.checkedCardTab.length);
+            memory.moveCount++;
         }
 
-        for (let i=0; i<this.card; i++) {
-            const card = document.createElement("div");
-            card.classList.add("game_card");
-            this.gameBoard.appendChild(card);
+            const countner = memory.moveCount < 10 ? `0${memory.moveCount}` : `${memory.moveCount}`;
+        
+            divScore.innerText = `${memory.userName} : ${countner}`;
+            console.log(`${memory.userName} zdobył ${memory.moveCount}`);
+    }
 
-            card.dataset.cardRandom = this.cards[i];
-            card.dataset.index = i;
-            console.log(this.cards);
-
-            card.addEventListener("click", e => this.cardClick(e));
+    const deleteCard = () =>{
+        // const {checkedCardTab, click, userName, moveCount, card, cardsPairs, checkedCard, hiScores} = memory
+        memory.checkedCardTab.forEach(el => {
+            const emptyDiv = document.createElement("div");
+            el.before(emptyDiv);
+            el.remove();
+        });
+    
+        memory.click = true;
+        memory.checkedCardTab = [];
+        // const {userName , moveCount} = memory
+        const hiScore = {name : memory.userName, point : memory.moveCount, data: memory.date.toLocaleString()}
+    
+        memory.cardsPairs++;
+        if (memory.cardsPairs >= memory.card / parseInt(memory.checkedCard)) {
+            memory.hiScores.push(hiScore);
+            alert("Wygrałeś");
         }
+        console.log(memory.hiScores);
+    }
+    
+    const resetCard = () => {
+        // const {checkedCardTab, click} = memory
+        memory.checkedCardTab.forEach(el => el.style.backgroundImage = "");
+        memory.checkedCardTab = [];
+        memory.click = true;
     }
 }
 
+const startGame = () => {
+        
+        memory.userName = prompt("podaj imię")
+        memory.card = prompt("podaj ile kart", 20)
+        memory.gridRows = prompt("podaj ile rzędów", 4)
+        memory.gridColumn = prompt("podaj ile kolumn", 5)
+        memory.checkedCard = prompt("ile kart zaznaczonych", 2)
+        gameBoard = document.querySelector(".game_board");
+        
+        gameBoard.style.gridTemplateColumns = `repeat(${memory.gridColumn}, 1fr)`
+        gameBoard.style.gridTemplateRows = `repeat(${memory.gridRows}, 1fr)`
+
+        divScore = document.querySelector(".game_score");
+        divScore.innerHTML = `${memory.userName} : ${memory.moveCount}`;
+        
+        cards = [];
+
+        for (let i=0; i<memory.card; i++) {
+            this.cards.push(Math.floor(i/`${memory.checkedCard}`));
+            // console.log(this.cards);
+        }
+
+        for (let i=memory.card - 1; i > 0; i--) {
+            const randomIndex = Math.floor(Math.random()*i);
+            const number = cards[i];
+            cards[i] = cards[randomIndex] 
+            cards[randomIndex] = number;
+        }
+
+        for (let i=0; i<memory.card; i++) {
+            const card = document.createElement("div");
+            card.classList.add("game_card");
+            gameBoard.appendChild(card);
+
+            card.dataset.cardRandom = cards[i];
+            card.dataset.index = i;
+            // console.log(cards);
+
+            card.addEventListener("click", e => cardClick({memory, e}));
+        }
+    }
+
 document.addEventListener("DOMContentLoaded", () => {
     const btnStart = document.querySelector(".game_btn_start");
-    btnStart.addEventListener("click", (e) => memory.startGame());
+    btnStart.addEventListener("click", (e) => startGame(memory));
 });
