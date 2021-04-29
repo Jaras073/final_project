@@ -14,11 +14,17 @@ body {
     min-height: 100vh;
 }
 
+.game{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
 .game_board {
-    margin:30px auto;
+    margin:50px auto 50px 100px;
     position: relative;
     overflow: hidden;
-    width: 1024px;
+    width: 75%;
     height: 700px;
     display: grid;
     border-radius: 5px;
@@ -64,7 +70,7 @@ body {
 }
 .game_name {
     color: #054ba7;
-    background-image: url('./img/avatar.svg');
+    /* background-image: url('./img/avatar.svg'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -79,4 +85,35 @@ body {
     margin-left: 25%;
     background: #F5F5FA;
     border-radius: 5px;
+}
+.game_info{
+    width: 25%;
+    height: 100vh;
+    border: 5px solid black;
+}
+.game_set{
+    width: 100%;
+    height: 35%;
+    background-color: aquamarine;
+}
+.game_rank{
+
+    width: 100%;
+    height: 65%;
+    background-color: #BF5A36;
+}
+.game_rank_tab {
+
+    width: 100%;
+    height: calc(100% - 50px);
+    background-color: #fa4807;
+}
+.game_rank p {
+    text-align: center;
+    font-size: 35px;
+    padding: 15px;
+}
+.game_rank_list {
+    width: 30%;
+    text-align: center;
 }

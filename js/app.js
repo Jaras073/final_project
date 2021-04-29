@@ -117,14 +117,34 @@ const cardClick = ({memory, e}) => {
         memory.click = true;
         memory.checkedCardTab = [];
         // const {userName , moveCount} = memory
-        const hiScore = {name : memory.userName, point : memory.moveCount, data: memory.date.toLocaleString()}
+        const hiScore = {
+            name : memory.userName, 
+            point : memory.moveCount, 
+            data: memory.date.toLocaleString()
+        }
     
         memory.cardsPairs++;
         if (memory.cardsPairs >= memory.card / parseInt(memory.checkedCard)) {
             memory.hiScores.push(hiScore);
+            createRank();
             alert("Wygrałeś");
         }
         console.log(memory.hiScores);
+    }
+
+    
+    const createRank = async () => {
+        const hiScore = {
+            name : memory.userName, 
+            point : memory.moveCount, 
+            data: memory.date.toLocaleString()
+        }
+        console.log(memory.userName);
+        await fetch('http://localhost:3000/rank', {
+            method: 'POST',
+            body: JSON.stringify(hiScore),
+            headers: {'Content-Type':'application/json'}
+        });
     }
     
     const resetCard = () => {
@@ -179,5 +199,6 @@ const startGame = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const btnStart = document.querySelector(".game_btn_start");
-    btnStart.addEventListener("click", (e) => startGame(memory));
+    btnStart.addEventListener("click", (e) => startGame(memory), rankPost);
+    
 });
