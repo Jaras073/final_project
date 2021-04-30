@@ -14,7 +14,7 @@ const rankPost = async () => {
                 <tr>
                     <td class="game_rank_list">${post.name}</td>
                     <td class="game_rank_list">${post.point}</td>
-                    <td class="game_rank_list">${post.data}</td>
+                    <td class="game_rank_list">${post.data[0].min < 10 ? `0${post.data[0].min}` : post.data[0].min}:${post.data[0].sek < 10 ? `0${post.data[0].sek}` : post.data[0].sek}</td>
                 </tr>
             </tbody>
         </table>
@@ -25,3 +25,5 @@ const rankPost = async () => {
 }
 
 window.addEventListener('DOMContentLoaded', () => rankPost())
+
+// export default rankPost

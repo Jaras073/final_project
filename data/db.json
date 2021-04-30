@@ -4,49 +4,122 @@
       "id": 1,
       "name": "Jarek",
       "point": 23,
-      "data": "28.04.2021, 22:39:36"
+      "data": [
+        {
+          "min": 0,
+          "sek": 5
+        }
+      ]
     },
     {
       "id": 2,
       "name": "Darek",
       "point": 13,
-      "data": "28.04.2021, 23:39:36"
+      "data": [
+        {
+          "min": 0,
+          "sek": 5
+        }
+      ]
     },
     {
       "id": 3,
       "name": "Maja",
       "point": 33,
-      "data": "28.04.2021, 23:45:36"
+      "data": [
+        {
+          "min": 0,
+          "sek": 5
+        }
+      ]
     },
     {
       "id": 4,
       "name": "Ania",
       "point": 34,
-      "data": "28.04.2021, 23:58:36"
+      "data": [
+        {
+          "min": 0,
+          "sek": 5
+        }
+      ]
     },
     {
       "id": 5,
       "name": "Krzysiek",
       "point": 22,
-      "data": "29.04.2021, 01:58:36"
+      "data": [
+        {
+          "min": 0,
+          "sek": 5
+        }
+      ]
     },
     {
       "name": "jarek",
       "point": 2,
-      "data": "29.04.2021, 02:10:53",
+      "data": [
+        {
+          "min": 0,
+          "sek": 5
+        }
+      ],
       "id": 6
     },
     {
       "name": "aeaw",
       "point": 4,
-      "data": "29.04.2021, 02:19:13",
+      "data": [
+        {
+          "min": 0,
+          "sek": 5
+        }
+      ],
       "id": 7
     },
     {
-      "name": "Tadek",
-      "point": 24,
-      "data": "29.04.2021, 02:26:49",
+      "name": "DUPA",
+      "point": 3,
+      "data": [
+        {
+          "min": 0,
+          "sek": 5
+        }
+      ],
       "id": 8
+    },
+    {
+      "name": "124214",
+      "point": 3,
+      "data": [
+        {
+          "min": 0,
+          "sek": 9
+        }
+      ],
+      "id": 9
+    },
+    {
+      "name": "asdsad",
+      "point": 3,
+      "data": [
+        {
+          "min": 0,
+          "sek": 6
+        }
+      ],
+      "id": 10
+    },
+    {
+      "name": "aaaaaaa",
+      "point": 2,
+      "data": [
+        {
+          "min": 0,
+          "sek": 4
+        }
+      ],
+      "id": 11
     }
   ]
 }

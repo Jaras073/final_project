@@ -1,3 +1,5 @@
+
+
 const memory = {
     userName:"",
     divImg:"",
@@ -6,6 +8,7 @@ const memory = {
     gridRows: 4,
     checkedCard: 2,
     checkedCardTab:[],
+    time:[],
     hiScores:[],
     date: new Date(),
     moveCount:'00',
@@ -117,35 +120,23 @@ const cardClick = ({memory, e}) => {
         memory.click = true;
         memory.checkedCardTab = [];
         // const {userName , moveCount} = memory
-        const hiScore = {
-            name : memory.userName, 
-            point : memory.moveCount, 
-            data: memory.date.toLocaleString()
-        }
+        // const hiScore = {
+        //     name : memory.userName, 
+        //     point : memory.moveCount, 
+        //     data: memory.time.slice(-1)
+        // }
     
         memory.cardsPairs++;
         if (memory.cardsPairs >= memory.card / parseInt(memory.checkedCard)) {
-            memory.hiScores.push(hiScore);
+            // memory.hiScores.push(hiScore);
             createRank();
+            console.log(memory.time[-1]);
             alert("Wygrałeś");
+            clearInterval(timer)
         }
         console.log(memory.hiScores);
     }
 
-    
-    const createRank = async () => {
-        const hiScore = {
-            name : memory.userName, 
-            point : memory.moveCount, 
-            data: memory.date.toLocaleString()
-        }
-        console.log(memory.userName);
-        await fetch('http://localhost:3000/rank', {
-            method: 'POST',
-            body: JSON.stringify(hiScore),
-            headers: {'Content-Type':'application/json'}
-        });
-    }
     
     const resetCard = () => {
         // const {checkedCardTab, click} = memory
@@ -173,7 +164,7 @@ const startGame = () => {
         cards = [];
 
         for (let i=0; i<memory.card; i++) {
-            this.cards.push(Math.floor(i/`${memory.checkedCard}`));
+            cards.push(Math.floor(i/`${memory.checkedCard}`));
             // console.log(this.cards);
         }
 
@@ -195,6 +186,7 @@ const startGame = () => {
 
             card.addEventListener("click", e => cardClick({memory, e}));
         }
+        startTimer()
     }
 
 document.addEventListener("DOMContentLoaded", () => {
