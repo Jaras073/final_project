@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Jarek",
       "point": 23,
-      "data": [
+      "time": [
         {
           "min": 0,
           "sek": 5
@@ -12,64 +12,69 @@
       ]
     },
     {
-      "id": 2,
-      "name": "Darek",
-      "point": 13,
-      "data": [
+      "name": "Jarek",
+      "point": 3,
+      "time": [
         {
           "min": 0,
-          "sek": 5
+          "sek": 11
         }
-      ]
+      ],
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "Maja",
-      "point": 33,
-      "data": [
-        {
-          "min": 0,
-          "sek": 5
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Ania",
-      "point": 34,
-      "data": [
-        {
-          "min": 0,
-          "sek": 5
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Krzysiek",
-      "point": 22,
-      "data": [
-        {
-          "min": 0,
-          "sek": 5
-        }
-      ]
-    },
-    {
-      "name": "jarek",
+      "name": "asd",
       "point": 2,
-      "data": [
+      "data": "Wed May 05 2021 01:12:29 GMT+0200 (czas środkowoeuropejski letni)",
+      "time": [
+        {
+          "min": 0,
+          "sek": 4
+        }
+      ],
+      "id": 3
+    },
+    {
+      "name": "asdasdasd",
+      "point": 3,
+      "data": "Tue, 04 May 2021 23:17:17 GMT",
+      "time": [
         {
           "min": 0,
           "sek": 5
         }
       ],
+      "id": 4
+    },
+    {
+      "name": "Jarekssssssss",
+      "point": 3,
+      "data": "Wed May 05 2021 01:18:27 GMT+0200 (czas środkowoeuropejski letni)",
+      "time": [
+        {
+          "min": 0,
+          "sek": 7
+        }
+      ],
+      "id": 5
+    },
+    {
+      "name": "Jarekkkkkkkk",
+      "point": 3,
+      "data": "01:20:36",
+      "time": [
+        {
+          "min": 0,
+          "sek": 6
+        }
+      ],
       "id": 6
     },
     {
-      "name": "aeaw",
-      "point": 4,
-      "data": [
+      "name": "Jarekiiiiiiiii",
+      "point": 3,
+      "data": "5.05.2021, 01:21:51",
+      "time": [
         {
           "min": 0,
           "sek": 5
@@ -78,48 +83,16 @@
       "id": 7
     },
     {
-      "name": "DUPA",
-      "point": 3,
-      "data": [
+      "name": "Jaras",
+      "point": 32,
+      "data": "5.05.2021, 01:23:13",
+      "time": [
         {
-          "min": 0,
-          "sek": 5
+          "min": 1,
+          "sek": 27
         }
       ],
       "id": 8
-    },
-    {
-      "name": "124214",
-      "point": 3,
-      "data": [
-        {
-          "min": 0,
-          "sek": 9
-        }
-      ],
-      "id": 9
-    },
-    {
-      "name": "asdsad",
-      "point": 3,
-      "data": [
-        {
-          "min": 0,
-          "sek": 6
-        }
-      ],
-      "id": 10
-    },
-    {
-      "name": "aaaaaaa",
-      "point": 2,
-      "data": [
-        {
-          "min": 0,
-          "sek": 4
-        }
-      ],
-      "id": 11
     }
   ]
 }

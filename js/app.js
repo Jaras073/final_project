@@ -11,7 +11,8 @@ const memory = {
     time:[],
     hiScores:[],
     date: new Date(),
-    moveCount:'00',
+    moveCount: 0,
+    divBoard: null,
     click : true,
     matchinCard : 0, 
     cardsPairs : 0,
@@ -110,7 +111,7 @@ const cardClick = ({memory, e}) => {
     }
 
     const deleteCard = () =>{
-        // const {checkedCardTab, click, userName, moveCount, card, cardsPairs, checkedCard, hiScores} = memory
+        // const {checkedCardTab, card, cardsPairs, checkedCard, hiScores} = memory
         memory.checkedCardTab.forEach(el => {
             const emptyDiv = document.createElement("div");
             el.before(emptyDiv);
@@ -130,9 +131,10 @@ const cardClick = ({memory, e}) => {
         if (memory.cardsPairs >= memory.card / parseInt(memory.checkedCard)) {
             // memory.hiScores.push(hiScore);
             createRank();
-            console.log(memory.time[-1]);
+            // console.log(memory.time[-1]);
             alert("Wygrałeś");
             clearInterval(timer)
+            location.reload()
         }
         console.log(memory.hiScores);
     }
@@ -148,27 +150,32 @@ const cardClick = ({memory, e}) => {
 
 const startGame = () => {
         
-        memory.userName = prompt("podaj imię")
-        memory.card = prompt("podaj ile kart", 20)
-        memory.gridRows = prompt("podaj ile rzędów", 4)
-        memory.gridColumn = prompt("podaj ile kolumn", 5)
-        memory.checkedCard = prompt("ile kart zaznaczonych", 2)
-        gameBoard = document.querySelector(".game_board");
-        
-        gameBoard.style.gridTemplateColumns = `repeat(${memory.gridColumn}, 1fr)`
-        gameBoard.style.gridTemplateRows = `repeat(${memory.gridRows}, 1fr)`
+        // memory.userName = prompt("podaj imię")
+        // memory.card = prompt("podaj ile kart", 20)
+        // memory.gridRows = prompt("podaj ile rzędów", 4)
+        // memory.gridColumn = prompt("podaj ile kolumn", 5)
+        // memory.checkedCard = prompt("ile kart zaznaczonych", 2)
+        memory.userName = document.querySelector('#userName').value;
+        memory.card = document.querySelector('#card').value;
+        memory.gridRows = document.querySelector('#gridRows').value;
+        memory.gridColumn = document.querySelector('#gridColumn').value;
+        memory.checkedCard = document.querySelector('#checkedCard').value;
+        memory.gameBoard = document.querySelector(".game_board");
+        memory.gameBoard.innerHTML = "";
+        memory.gameBoard.style.gridTemplateColumns = `repeat(${memory.gridColumn}, 1fr)`
+        memory.gameBoard.style.gridTemplateRows = `repeat(${memory.gridRows}, 1fr)`
 
         divScore = document.querySelector(".game_score");
         divScore.innerHTML = `${memory.userName} : ${memory.moveCount}`;
         
         cards = [];
 
-        for (let i=0; i<memory.card; i++) {
+        for (let i=0; i<parseInt(memory.card); i++) {
             cards.push(Math.floor(i/`${memory.checkedCard}`));
             // console.log(this.cards);
         }
 
-        for (let i=memory.card - 1; i > 0; i--) {
+        for (let i=parseInt(memory.card) - 1; i > 0; i--) {
             const randomIndex = Math.floor(Math.random()*i);
             const number = cards[i];
             cards[i] = cards[randomIndex] 
@@ -178,7 +185,7 @@ const startGame = () => {
         for (let i=0; i<memory.card; i++) {
             const card = document.createElement("div");
             card.classList.add("game_card");
-            gameBoard.appendChild(card);
+            memory.gameBoard.appendChild(card);
 
             card.dataset.cardRandom = cards[i];
             card.dataset.index = i;

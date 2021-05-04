@@ -12,9 +12,9 @@ const rankPost = async () => {
         <table>
             <tbody>
                 <tr>
-                    <td class="game_rank_list">${post.name}</td>
-                    <td class="game_rank_list">${post.point}</td>
-                    <td class="game_rank_list">${post.data[0].min < 10 ? `0${post.data[0].min}` : post.data[0].min}:${post.data[0].sek < 10 ? `0${post.data[0].sek}` : post.data[0].sek}</td>
+                    <td class="game_rank_listHead">${post.name}</td>
+                    <td class="game_rank_listHead">${post.point}</td>
+                    <td class="game_rank_listHead">${post.time[0].min < 10 ? `0${post.time[0].min}` : post.time[0].min}:${post.time[0].sek < 10 ? `0${post.time[0].sek}` : post.time[0].sek}</td>
                 </tr>
             </tbody>
         </table>

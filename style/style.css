@@ -82,7 +82,7 @@ body {
 .game_btn_start {
     width: 120px;
     height: 34px;
-    margin-top: 100px;
+    margin-top: 20px;
     margin-left: 25%;
     background: #F5F5FA;
     border-radius: 5px;
@@ -104,6 +104,8 @@ body {
 .game_set{
     width: 100%;
     height: 35%;
+    display: flex;
+    flex-direction: column;
     background-color: aquamarine;
 }
 .game_rank{
@@ -115,7 +117,8 @@ body {
 .game_rank_tab {
 
     width: 100%;
-    height: calc(100% - 50px);
+    height: calc(100% - 100px);
+    overflow-y: scroll;
     background-color: #fa4807;
 }
 .game_rank p {
@@ -139,4 +142,48 @@ body {
 }
 .game_rank_listHead:nth-of-type(1){
     text-align: left;
+}
+.userName {
+    margin-top: 65px;
+    margin-left: 15px;
+
+}
+.userName input{
+    width: 120px;
+}
+.card {
+    margin-top: 15px;
+    margin-left: 15px;
+
+}
+.gridRows {
+    margin-top: 15px;
+    margin-left: 15px;
+
+}
+.gridColumn {
+    margin-top: 15px;
+    margin-left: 15px;
+
+}
+.checkedCard {
+    margin-top: 15px;
+    margin-left: 15px;
+
+}
+.checkedCard label {
+    display: inline-block;
+    width: 160px;
+    text-align: center;
+}
+label {
+    display: inline-block;
+    width: 80px;
+}
+input {
+    width: 40px;
+}
+.game_set_line {
+    display: flex;
+    justify-content: space-between;
 }
