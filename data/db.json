@@ -1,98 +1,412 @@
 {
   "rank": [
     {
-      "id": 1,
       "name": "Jarek",
-      "point": 23,
-      "time": [
+      "point": 18,
+      "data": "11.05.2021, 22:22:54",
+      "stoper": [
         {
           "min": 0,
-          "sek": 5
+          "sek": 35
         }
-      ]
+      ],
+      "id": 1
     },
     {
-      "name": "Jarek",
-      "point": 3,
-      "time": [
+      "name": "Jarek123",
+      "point": 30,
+      "data": "11.05.2021, 22:23:51",
+      "stoper": [
         {
-          "min": 0,
-          "sek": 11
+          "min": 1,
+          "sek": 13
         }
       ],
       "id": 2
     },
     {
-      "name": "asd",
-      "point": 2,
-      "data": "Wed May 05 2021 01:12:29 GMT+0200 (czas środkowoeuropejski letni)",
-      "time": [
+      "name": "JarekXXX",
+      "point": 41,
+      "data": "12.05.2021, 01:28:45",
+      "stoper": [
         {
-          "min": 0,
-          "sek": 4
+          "min": 1,
+          "sek": 33
         }
       ],
       "id": 3
     },
     {
-      "name": "asdasdasd",
-      "point": 3,
-      "data": "Tue, 04 May 2021 23:17:17 GMT",
-      "time": [
+      "name": "JarekXYZ",
+      "point": 27,
+      "data": "12.05.2021, 11:58:53",
+      "stoper": [
         {
-          "min": 0,
-          "sek": 5
+          "min": 1,
+          "sek": 3
         }
       ],
       "id": 4
     },
     {
-      "name": "Jarekssssssss",
-      "point": 3,
-      "data": "Wed May 05 2021 01:18:27 GMT+0200 (czas środkowoeuropejski letni)",
-      "time": [
+      "name": "Jarek VVV",
+      "point": 28,
+      "data": "12.05.2021, 13:43:30",
+      "stoper": [
         {
-          "min": 0,
-          "sek": 7
+          "min": 1,
+          "sek": 1
         }
       ],
       "id": 5
     },
     {
-      "name": "Jarekkkkkkkk",
-      "point": 3,
-      "data": "01:20:36",
-      "time": [
+      "name": "JarekVXV2",
+      "point": 24,
+      "data": "12.05.2021, 13:44:54",
+      "stoper": [
         {
-          "min": 0,
-          "sek": 6
+          "min": 1,
+          "sek": 1
         }
       ],
       "id": 6
     },
     {
-      "name": "Jarekiiiiiiiii",
-      "point": 3,
-      "data": "5.05.2021, 01:21:51",
-      "time": [
+      "name": "JarekWWW",
+      "point": 34,
+      "data": "12.05.2021, 16:27:22",
+      "stoper": [
         {
-          "min": 0,
-          "sek": 5
+          "min": 1,
+          "sek": 23
         }
       ],
       "id": 7
     },
     {
-      "name": "Jaras",
-      "point": 32,
-      "data": "5.05.2021, 01:23:13",
-      "time": [
+      "name": "Jarek I_I_I",
+      "point": 38,
+      "data": "12.05.2021, 20:32:21",
+      "stoper": [
         {
           "min": 1,
           "sek": 27
         }
       ],
       "id": 8
+    },
+    {
+      "name": "Jarek",
+      "point": 36,
+      "data": "12.05.2021, 22:39:23",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 50
+        }
+      ],
+      "id": 9
+    },
+    {
+      "name": "Jarek",
+      "point": 10,
+      "data": "12.05.2021, 22:47:42",
+      "stoper": [
+        {
+          "min": 3,
+          "sek": 21
+        }
+      ],
+      "id": 10
+    },
+    {
+      "name": "",
+      "point": 25,
+      "data": "13.05.2021, 18:07:00",
+      "stoper": [
+        {
+          "min": 0,
+          "sek": 59
+        }
+      ],
+      "id": 11
+    },
+    {
+      "name": "JarekOOO",
+      "point": 29,
+      "data": "13.05.2021, 19:48:21",
+      "stoper": [
+        {
+          "min": 0,
+          "sek": 57
+        }
+      ],
+      "id": 12
+    },
+    {
+      "name": "JarekUUU",
+      "point": 38,
+      "data": "13.05.2021, 19:49:58",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 18
+        }
+      ],
+      "id": 13
+    },
+    {
+      "name": "JarekTTT",
+      "point": 36,
+      "data": "13.05.2021, 19:53:07",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 24
+        }
+      ],
+      "id": 14
+    },
+    {
+      "name": "JarekBBB",
+      "point": 33,
+      "data": "13.05.2021, 19:56:22",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 13
+        }
+      ],
+      "id": 15
+    },
+    {
+      "name": "JarekCCC",
+      "point": 32,
+      "data": "13.05.2021, 20:06:10",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 11
+        }
+      ],
+      "id": 16
+    },
+    {
+      "name": "JarekDDD",
+      "point": 26,
+      "data": "13.05.2021, 20:07:49",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 1
+        }
+      ],
+      "id": 17
+    },
+    {
+      "name": "JarekPPP",
+      "point": 37,
+      "data": "13.05.2021, 22:59:52",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 35
+        }
+      ],
+      "id": 18
+    },
+    {
+      "name": "JarekIII",
+      "point": 24,
+      "data": "13.05.2021, 23:24:15",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 2
+        }
+      ],
+      "id": 19
+    },
+    {
+      "name": "JarekHHH",
+      "point": 26,
+      "data": "14.05.2021, 00:40:47",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 3
+        }
+      ],
+      "id": 20
+    },
+    {
+      "name": "JarekHHH",
+      "point": 28,
+      "data": "14.05.2021, 00:42:11",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 12
+        }
+      ],
+      "id": 21
+    },
+    {
+      "name": "JarekRRR",
+      "point": 27,
+      "data": "14.05.2021, 01:05:55",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 4
+        }
+      ],
+      "id": 22
+    },
+    {
+      "name": "JarekSSS",
+      "point": 30,
+      "data": "14.05.2021, 15:12:34",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 10
+        }
+      ],
+      "id": 23
+    },
+    {
+      "name": "JarekQQQ",
+      "point": 40,
+      "data": "14.05.2021, 17:07:30",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 31
+        }
+      ],
+      "id": 24
+    },
+    {
+      "name": "Jarek007",
+      "point": 27,
+      "data": "14.05.2021, 17:19:09",
+      "stoper": [
+        {
+          "min": 0,
+          "sek": 57
+        }
+      ],
+      "id": 25
+    },
+    {
+      "name": "JarekKKK",
+      "point": 42,
+      "data": "14.05.2021, 18:47:12",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 25
+        }
+      ],
+      "id": 26
+    },
+    {
+      "name": "JarekFFF",
+      "point": 30,
+      "data": "14.05.2021, 20:06:39",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 11
+        }
+      ],
+      "id": 27
+    },
+    {
+      "name": "Jarek",
+      "point": 28,
+      "data": "14.05.2021, 22:15:38",
+      "stoper": [
+        {
+          "min": 0,
+          "sek": 59
+        }
+      ],
+      "id": 28
+    },
+    {
+      "name": "JarekFFF",
+      "point": 19,
+      "data": "14.05.2021, 22:23:36",
+      "stoper": [
+        {
+          "min": 0,
+          "sek": 43
+        }
+      ],
+      "id": 29
+    },
+    {
+      "name": "",
+      "point": 36,
+      "data": "15.05.2021, 00:10:34",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 14
+        }
+      ],
+      "id": 30
+    },
+    {
+      "name": "JarekBBB",
+      "point": 24,
+      "data": "15.05.2021, 00:28:44",
+      "stoper": [
+        {
+          "min": 1,
+          "sek": 1
+        }
+      ],
+      "id": 31
+    },
+    {
+      "name": "JarekUUU",
+      "point": 26,
+      "data": "15.05.2021, 01:33:15",
+      "stoper": [
+        {
+          "min": 0,
+          "sek": 59
+        }
+      ],
+      "id": 32
+    },
+    {
+      "name": "Jarek222",
+      "point": 8,
+      "data": "15.05.2021, 01:40:30",
+      "stoper": [
+        {
+          "min": 0,
+          "sek": 22
+        }
+      ],
+      "id": 33
+    },
+    {
+      "name": "Jarek333",
+      "point": 15,
+      "data": "15.05.2021, 01:41:23",
+      "stoper": [
+        {
+          "min": 0,
+          "sek": 27
+        }
+      ],
+      "id": 34
     }
   ]
 }

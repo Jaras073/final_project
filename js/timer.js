@@ -1,36 +1,38 @@
-const gameTimer = document.querySelector('.game_timer');
+const gameTimer = document.querySelector('.game_timer_counter');
 
-let seconds = 0;
-let minutes = 0;
-let timer;
+const startTimer = () =>{
+    let time = `${memory.min*60}`;
 
-const run = () =>{
+    timerInterval = setInterval(()=>{
 
-    seconds++
-    
-    if(seconds == 60){
-        seconds = 0;
-        minutes++
-    }
-    
-    const t = `
-    ${minutes < 10 ? `0${minutes}` : minutes} 
-    : 
-    ${seconds< 10 ? `0${seconds}` : seconds}
-    `
+        let minutesT = Math.floor(time / 60);
+        let secondsT = time % 60;
 
-    gameTimer.innerHTML = t;
-    
-        memory.time.push({
-            min: minutes,
-            sek: seconds
-        })
+        if(secondsT < 15 && minutesT == 0){
+            gameTimer.style.color='rgb(209, 5, 5)';
+        }
+        
+        if(secondsT == '0' && minutesT == '0'){
+            clearInterval(timerInterval);
+            memory.gameBoard.classList.add('winner_board');
+            const txt = document.createElement('div');
+            txt.innerHTML = 'Niestety koniec czasu !!!';
+            document.body.append(txt);
+            txt.classList.add('winner')
+            setTimeout(() => {
+                location.reload()
+            }, 3000);
+        }
+  
+        const t = `
+        ${minutesT < 10 ? `0${minutesT}` : minutesT} 
+        : 
+        ${secondsT< 10 ? `0${secondsT}` : secondsT}
+        `
+        
+        gameTimer.innerHTML = t;
+        
+        time--
+
+    }, 1000)
 }
-const startTimer = (memory) =>{
-    timer = setInterval(run, 1000)
-}
-// export default startTimer
-
-
-
-

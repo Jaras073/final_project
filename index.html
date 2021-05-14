@@ -1,80 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="./img/favicon.svg"
+      sizes="any"
+      type="image/svg+xml"
+    />
     <link rel="stylesheet" href="./style/style.css" />
-    <title>Document</title>
+    <title>Memory Game</title>
   </head>
   <body>
     <div class="game">
       <div class="game_info">
-        <div class="game_set">
-          <div class="userName">
-            <label for="userName">Podaj imię</label>
-            <input type="text" name="userName" id="userName" />
+        <div class="game_logo">
+          <div class="logo_m">M</div>
+          <div class="logo_e">E</div>
+          <div class="logo_m1">M</div>
+          <div class="logo_o">O</div>
+          <div class="logo_r">R</div>
+          <div class="logo_y">Y</div>
+          <div class="logo_sp"></div>
+          <div class="logo_g">G</div>
+          <div class="logo_a">A</div>
+          <div class="logo_m2">M</div>
+          <div class="logo_e1">E</div>
+        </div>
+        <div class="game_btn">
+          <button class="game_btn_stoper">
+            <div class="game_btn_stoperName">Graj na punkty</div>
+          </button>
+          <button class="game_btn_timer">
+            <div class="game_btn_timerName">Graj na czas</div>
+          </button>
+          <button class="game_btn_reset">
+            <div class="game_btn_resetName">Restartuj</div>
+          </button>
+        </div>
+        <div class="userName">
+          <label for="userName" class="input_label_name">Wpisz Imię</label>
+          <input
+            type="text"
+            name="userName"
+            class="input_text_name"
+            id="userName"
+          />
+        </div>
+        <div class="game_set"></div>
+        <div class="game_set_stoper">
+          <div class="card">
+            <label for="card" class="input_label_card">Ile kart</label>
+            <input
+              type="number"
+              name="card"
+              class="input_text_card"
+              id="card"
+            />
           </div>
-          <div class="game_set_line">
-            <div class="card">
-              <label for="card"
-                >Ile kart
-                <input type="number" name="card" id="card" />
-              </label>
-            </div>
-            <div class="checkedCard">
-              <label for="checkedCard"
-                >Ile zaznaczonych kart
-                <input type="number" name="checkedCard" id="checkedCard" />
-              </label>
-            </div>
+          <div class="checkedCard">
+            <label for="checkedCard" class="input_label_checkedCard"
+              >Ile zaznaczonych kart</label
+            >
+            <input
+              type="number"
+              name="checkedCard"
+              class="input_text_checkedCard"
+              id="checkedCard"
+            />
           </div>
-          <div class="game_set_line">
-            <div class="gridRows">
-              <label for="gridRows"
-                >Ile rzędów
-                <input type="number" name="gridRows" id="gridRows" />
-              </label>
-            </div>
-            <div class="gridColumn">
-              <label for="gridColumn"
-                >Ile kolumn
-                <input type="number" name="gridColumn" id="gridColumn" />
-              </label>
-            </div>
+
+          <button class="game_btn_startStoper">
+            <div class="game_btn_startStoperName">Gramy !!!</div>
+          </button>
+        </div>
+        <div class="game_set_timer">
+          <div class="cardTimer">
+            <label for="cardTimer" class="input_label_cardTimer"
+              >Ile kart</label
+            >
+            <input
+              type="number"
+              name="cardTimer"
+              class="input_text_cardTimer"
+              id="cardTimer"
+            />
           </div>
-          <button class="game_btn_start">Graj</button>
+          <div class="game_time_minutes">
+            <label for="game_time_minutes" class="input_label_minutes"
+              >Ile minut</label
+            >
+            <input
+              type="number"
+              name="game_time_minutes"
+              class="input_text_minutes"
+              id="game_time_minutes"
+            />
+          </div>
+          <button class="game_btn_startTimer">
+            <div class="game_btn_startTimerName">Gramy !!!</div>
+          </button>
         </div>
         <div class="game_rank">
-          <p>Ranking</p>
+          <div class="game_rank_p">
+            <div class="game_rank_pName">Ranking</div>
+          </div>
           <div class="game_rank_tabHead">
             <table>
               <thead>
                 <tr>
-                  <th class="game_rank_listHead">Imię</th>
-                  <th class="game_rank_listHead">Ilość punków</th>
-                  <th class="game_rank_listHead">Czas</th>
+                  <th class="game_rank_listRank">Pozycja</th>
+                  <th class="game_rank_listName">Imię</th>
+                  <th class="game_rank_listPunkt">Ilość punków</th>
+                  <th class="game_rank_listTime">Czas</th>
                 </tr>
               </thead>
             </table>
           </div>
-          <div class="game_rank_tab"></div>
+          <div class="game_rank_tab">
+            <table>
+              <tbody class="game_rank_tabTbody"></tbody>
+            </table>
+          </div>
         </div>
       </div>
       <div class="game_board"></div>
-      <div class="game_menu">
-        <div class="game_timer">00 : 00</div>
-        <div class="game_name"></div>
-        <div class="game_score">Liczba ruchów: 0</div>
+      <div class="game_top">
+        <div class="game_timer">
+          <div class="game_timer_name">Czas:</div>
+          <div class="game_timer_counter">00 : 00</div>
+        </div>
+        <div class="game_name">
+          <div class="game_name_hello">Witaj:</div>
+          <div class="game_name_helloName">Gościu</div>
+        </div>
+        <div class="game_score">
+          <div class="game_score_name">Liczba ruchów:</div>
+          <div class="game_score_counter">00</div>
+        </div>
       </div>
     </div>
   </body>
   <script src="js/app.js"></script>
   <script src="js/createRank.js"></script>
-  <script src="js/rank.js"></script>
+  <script src="js/rankPost.js"></script>
+  <script src="js/stoper.js"></script>
   <script src="js/timer.js"></script>
+  <script src="js/timerGame.js"></script>
 </html>

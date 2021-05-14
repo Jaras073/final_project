@@ -1,20 +1,14 @@
-
-
 const memory = {
-    userName:"",
-    divImg:"",
+    userName: '',
     card : 20,
-    gridColumn: 5,
-    gridRows: 4,
     checkedCard: 2,
-    checkedCardTab:[],
-    time:[],
-    hiScores:[],
+    checkedCardTab: [],
+    min: 1,
+    stoper:[],
     date: new Date(),
-    moveCount: 0,
-    divBoard: null,
+    moveCount: '',
+    gameBoard: null,
     click : true,
-    matchinCard : 0, 
     cardsPairs : 0,
     cardsImg : [ 
         "img/1.svg",
@@ -48,20 +42,15 @@ const memory = {
         "img/29.svg",
         "img/30.svg",
     ],
- 
-
 }
 
 const cardClick = ({memory, e}) => {
-
-    // const {click, checkedCard, checkedCardTab, cardsImg, moveCount, userName, cardsPairs, card, hiScores} = memory
 
     if (memory.click && memory.checkedCard === '2') {
         
         if (!memory.checkedCardTab[0] || (memory.checkedCardTab[0].dataset.index !== e.target.dataset.index)){
             memory.checkedCardTab.push(e.target);
             e.target.style.backgroundImage = `url(${memory.cardsImg[e.target.dataset.cardRandom]})`;
-            console.log(memory.checkedCardTab);
         }
 
         if (memory.checkedCardTab.length === parseInt(memory.checkedCard)) {
@@ -72,15 +61,13 @@ const cardClick = ({memory, e}) => {
             } else {
                 setTimeout(() => resetCard(), 500);
             }
-            
-            console.log(memory.checkedCardTab.length);
+
             memory.moveCount++;
         }
     
             const countner = memory.moveCount < 10 ? `0${memory.moveCount}` : `${memory.moveCount}`;
         
-            divScore.innerText = `${memory.userName} : ${countner}`;
-            console.log(`${memory.userName} zdobył ${memory.moveCount}`);
+            divScore.innerText = `${countner}`;
     }
 
     if (memory.click && memory.checkedCard === '3') {
@@ -88,7 +75,6 @@ const cardClick = ({memory, e}) => {
         if (!memory.checkedCardTab[0] || (memory.checkedCardTab[0].dataset.index !== e.target.dataset.index)){
             memory.checkedCardTab.push(e.target);
             e.target.style.backgroundImage = `url(${memory.cardsImg[e.target.dataset.cardRandom]})`;
-            console.log(memory.checkedCardTab);
         }
 
         if (memory.checkedCardTab.length === parseInt(memory.checkedCard)) {
@@ -99,19 +85,16 @@ const cardClick = ({memory, e}) => {
             } else {
                 setTimeout(() => resetCard({memory}), 500);
             }
-            
-            console.log(memory.checkedCardTab.length);
+
             memory.moveCount++;
         }
 
             const countner = memory.moveCount < 10 ? `0${memory.moveCount}` : `${memory.moveCount}`;
         
-            divScore.innerText = `${memory.userName} : ${countner}`;
-            console.log(`${memory.userName} zdobył ${memory.moveCount}`);
+            divScore.innerText = `${countner}`;
     }
 
     const deleteCard = () =>{
-        // const {checkedCardTab, card, cardsPairs, checkedCard, hiScores} = memory
         memory.checkedCardTab.forEach(el => {
             const emptyDiv = document.createElement("div");
             el.before(emptyDiv);
@@ -120,84 +103,191 @@ const cardClick = ({memory, e}) => {
     
         memory.click = true;
         memory.checkedCardTab = [];
-        // const {userName , moveCount} = memory
-        // const hiScore = {
-        //     name : memory.userName, 
-        //     point : memory.moveCount, 
-        //     data: memory.time.slice(-1)
-        // }
-    
         memory.cardsPairs++;
+
         if (memory.cardsPairs >= memory.card / parseInt(memory.checkedCard)) {
-            // memory.hiScores.push(hiScore);
             createRank();
-            // console.log(memory.time[-1]);
-            alert("Wygrałeś");
-            clearInterval(timer)
-            location.reload()
+            clearInterval(stoper)
+            memory.gameBoard.classList.add('winner_board');
+            const txt = document.createElement('div');
+            txt.innerHTML = 'Gratulacje wygraleś !!!';
+            document.body.append(txt);
+            txt.classList.add('winner')
+            setTimeout(() => {
+                location.reload()
+            }, 3000);
         }
-        console.log(memory.hiScores);
     }
 
-    
     const resetCard = () => {
-        // const {checkedCardTab, click} = memory
         memory.checkedCardTab.forEach(el => el.style.backgroundImage = "");
         memory.checkedCardTab = [];
         memory.click = true;
     }
 }
 
-const startGame = () => {
-        
-        // memory.userName = prompt("podaj imię")
-        // memory.card = prompt("podaj ile kart", 20)
-        // memory.gridRows = prompt("podaj ile rzędów", 4)
-        // memory.gridColumn = prompt("podaj ile kolumn", 5)
-        // memory.checkedCard = prompt("ile kart zaznaczonych", 2)
-        memory.userName = document.querySelector('#userName').value;
-        memory.card = document.querySelector('#card').value;
-        memory.gridRows = document.querySelector('#gridRows').value;
-        memory.gridColumn = document.querySelector('#gridColumn').value;
-        memory.checkedCard = document.querySelector('#checkedCard').value;
-        memory.gameBoard = document.querySelector(".game_board");
-        memory.gameBoard.innerHTML = "";
-        memory.gameBoard.style.gridTemplateColumns = `repeat(${memory.gridColumn}, 1fr)`
-        memory.gameBoard.style.gridTemplateRows = `repeat(${memory.gridRows}, 1fr)`
+const startGame = () => {    
 
-        divScore = document.querySelector(".game_score");
-        divScore.innerHTML = `${memory.userName} : ${memory.moveCount}`;
-        
-        cards = [];
+    memory.userName = document.querySelector('#userName').value;
+    memory.card = document.querySelector('#card').value;
+    memory.checkedCard = document.querySelector('#checkedCard').value;
+    memory.gameBoard = document.querySelector(".game_board");
+    memory.gameBoard.innerHTML = "";
 
-        for (let i=0; i<parseInt(memory.card); i++) {
-            cards.push(Math.floor(i/`${memory.checkedCard}`));
-            // console.log(this.cards);
-        }
-
-        for (let i=parseInt(memory.card) - 1; i > 0; i--) {
-            const randomIndex = Math.floor(Math.random()*i);
-            const number = cards[i];
-            cards[i] = cards[randomIndex] 
-            cards[randomIndex] = number;
-        }
-
-        for (let i=0; i<memory.card; i++) {
-            const card = document.createElement("div");
-            card.classList.add("game_card");
-            memory.gameBoard.appendChild(card);
-
-            card.dataset.cardRandom = cards[i];
-            card.dataset.index = i;
-            // console.log(cards);
-
-            card.addEventListener("click", e => cardClick({memory, e}));
-        }
-        startTimer()
+    if(memory.card >= 0 && memory.card <= 9 && memory.checkedCard == 2 || memory.card > 60 && memory.checkedCard == 2){
+        memory.gameBoard.classList.add('winner_board');
+        const txt = document.createElement('div');
+        txt.innerHTML = 'Powinieneś wybrać z zakresu pomiędzy 10 a 60 kart :)';
+        document.body.append(txt);
+        txt.classList.add('winner_info')
+        gridColumn = 1
+        gridRows = 1
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
     }
 
+    if(memory.card >= 0 && memory.card <= 9 && memory.checkedCard == 3 || memory.card > 90 && memory.checkedCard == 3){
+        memory.gameBoard.classList.add('winner_board');
+        const txt = document.createElement('div');
+        txt.innerHTML = 'Powinieneś wybrać z zakresu pomiędzy 9 a 90 kart :)';
+        document.body.append(txt);
+        txt.classList.add('winner_info')
+        gridColumn = 1
+        gridRows = 1
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
+    }
+
+    if(memory.checkedCard < 2 || memory.checkedCard > 3){
+        memory.gameBoard.classList.add('winner_board');
+        const txt = document.createElement('div');
+        txt.innerHTML = 'Powinieneś wybrać z zakresu pomiędzy 2 a 3:)';
+        document.body.append(txt);
+        txt.classList.add('winner_info')
+        gridColumn = 1
+        gridRows = 1
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
+    }
+
+    if(memory.card >= 10 && memory.card <= 16 && memory.checkedCard == 2){
+        gridColumn = 4
+        gridRows = 4
+    }else if(memory.card >= 17 && memory.card <= 24 && memory.checkedCard == 2){
+        gridColumn = 6
+        gridRows = 4
+    }else if(memory.card >= 25 && memory.card <= 36 && memory.checkedCard == 2){
+        gridColumn = 6
+        gridRows = 6
+    }else if(memory.card >= 37 && memory.card <= 49 && memory.checkedCard == 2){
+        gridColumn = 7
+        gridRows = 7
+    }else if(memory.card >= 50 && memory.card <= 60 && memory.checkedCard == 2){
+        gridColumn = 8
+        gridRows = 8
+    }else if(memory.card >= 9 && memory.card <= 18 && memory.checkedCard == 3){
+        gridColumn = 6
+        gridRows = 3
+    }else if(memory.card >= 19 && memory.card <= 24 && memory.checkedCard == 3){
+        gridColumn = 6
+        gridRows = 4
+    }else if(memory.card >= 25 && memory.card <= 36 && memory.checkedCard == 3){
+        gridColumn = 6
+        gridRows = 6
+    }else if(memory.card >= 37 && memory.card <= 49 && memory.checkedCard == 3){
+        gridColumn = 7
+        gridRows = 7
+    }else if(memory.card >= 50 && memory.card <= 64 && memory.checkedCard == 3){
+        gridColumn = 8
+        gridRows = 8
+    }else if(memory.card >= 65 && memory.card <= 72 && memory.checkedCard == 3){
+        gridColumn = 9
+        gridRows = 8
+    }else if(memory.card >= 73 && memory.card <= 81 && memory.checkedCard == 3){
+        gridColumn = 9
+        gridRows = 9
+    }else if(memory.card >= 82 && memory.card <= 90 && memory.checkedCard == 3){
+        gridColumn = 10
+        gridRows = 9
+    }
+
+    memory.gameBoard.style.gridTemplateColumns = `repeat(${gridColumn}, 1fr)`
+    memory.gameBoard.style.gridTemplateRows = `repeat(${gridRows}, 1fr)`
+
+    divScore = document.querySelector(".game_score_counter");
+    divScore.innerHTML = `${memory.moveCount}`;
+
+    divUserName = document.querySelector(".game_name_helloName");
+    divUserName.innerHTML = `${memory.userName}`;
+    
+    cards = [];
+
+    for (let i=0; i<parseInt(memory.card); i++) {
+        cards.push(Math.floor(i/`${memory.checkedCard}`));
+    }
+
+    for (let i=parseInt(memory.card) - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random()*i);
+        const number = cards[i];
+        cards[i] = cards[randomIndex] 
+        cards[randomIndex] = number;
+    }
+
+    for (let i=0; i<memory.card; i++) {
+        const card = document.createElement("div");
+        card.classList.add("game_card");
+        memory.gameBoard.appendChild(card);
+
+        card.dataset.cardRandom = cards[i];
+        card.dataset.index = i;
+
+        card.addEventListener("click", e => cardClick({memory, e}));
+    };   
+        startStoper();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    const btnStart = document.querySelector(".game_btn_start");
-    btnStart.addEventListener("click", (e) => startGame(memory), rankPost);
+    const btnGameStartStoper = document.querySelector(".game_btn_startStoper");
+    btnGameStartStoper.addEventListener("click", (e) => startGame(), rankPost);
     
 });
+
+const btnStoper = () => {
+    document.querySelector('.game_set_stoper').classList.toggle('active');
+    document.querySelector('.game_set_timer').classList.remove('active');
+    document.querySelector('.game_set') ? document.querySelector('.game_set').classList.add('active') : document.querySelector('.game_set').classList.remove('active');
+}
+const btnStartStoper = document.querySelector(".game_btn_stoper");
+        btnStartStoper.addEventListener("click", () => btnStoper());
+
+const btnTimer = () => {
+    document.querySelector('.game_set_timer').classList.toggle('active');
+    document.querySelector('.game_set_stoper').classList.remove('active')
+    document.querySelector('.game_set') ? document.querySelector('.game_set').classList.add('active') : document.querySelector('.game_set').classList.remove('active');
+
+}
+
+const btnStartTimer = document.querySelector(".game_btn_timer");
+    btnStartTimer.addEventListener("click", () => btnTimer());
+
+
+const btnReload = () => {
+    if(memory.gameBoard){
+        memory.gameBoard.classList.add('winner_board');
+        const txt = document.createElement('div');
+        txt.innerHTML = 'Resetujemy ustawienia :)';
+        document.body.append(txt);
+        txt.classList.add('winner_info')
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
+    }else{
+        location.reload()
+    }
+}
+
+const btnReset = document.querySelector('.game_btn_reset');
+    btnReset.addEventListener('click',() => btnReload())
